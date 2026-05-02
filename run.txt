@@ -1,0 +1,6 @@
+npm run install:all
+cd DoubtDeskBackend
+cp .env.example .env
+cd ..
+npm run dev:backend
+npm run dev:frontend

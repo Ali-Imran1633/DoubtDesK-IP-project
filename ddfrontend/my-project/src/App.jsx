@@ -1,0 +1,32 @@
+import React, { useContext, useRef } from "react";
+import { Outlet, useNavigate, useLocation } from "react-router-dom";
+import Navbar from "./components/common/Navbar";
+import Footer from "./components/common/Footer";
+import { AuthContext } from "./context/AuthContext";
+
+const App = () => {
+  const {
+    loggedInUser,
+    courses,
+    loadingCourses,
+    enrolledCourses,
+    handleEnrollClick,
+  } = useContext(AuthContext);
+  const coursesSectionRef = useRef(null);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50/50 font-inter flex flex-col text-slate-800 selection:bg-blue-100 selection:text-blue-900">
+      <Navbar />
+
+      <main className="flex-grow">
+        <Outlet />
+      </main>
+
+      <Footer />
+    </div>
+  );
+};
+
+export default App;
